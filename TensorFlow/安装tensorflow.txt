@@ -1,0 +1,339 @@
+
+				  
+				  安装tensorflow
+				  
+				  　conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ 　　　　conda config --set show_channel_urls yes
+
+　　　　这两行代码用来改成连接清华镜像的
+
+　　　　接下来安装Tensorflow，在Anaconda Prompt中输入：
+
+　　　　conda create -n tensorflow  
+
+activate tensorflow
+
+--------
+
+C:\Users\方建勇>conda create -n tensorflow
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: D:\Anaconda\envs\tensorflow
+
+
+Proceed ([y]/n)? y
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+#
+# To activate this environment, use:
+# > activate tensorflow
+#
+# To deactivate an active environment, use:
+# > deactivate
+#
+# * for power-users using bash, you must source
+#
+
+
+C:\Users\方建勇>activate tensorflow
+
+(tensorflow) C:\Users\方建勇>
+
+------------------------
+
+C:\Users\方建勇>pip install  https://pypi.python.org/pypi/tensorflow/1.4.0
+Collecting https://pypi.python.org/pypi/tensorflow/1.4.0
+  Using cached https://pypi.python.org/pypi/tensorflow/1.4.0
+  Cannot unpack file C:\Users\方建勇\AppData\Local\TEMP_~1\pip-unpack-ya2hqxga\1.4.0 (downloaded from C:\Users\方建勇\AppData\Local\TEMP_~1\pip-req-build-b_wqgnsm, content-type: text/html; charset=UTF-8); cannot detect archive format
+Cannot determine archive format of C:\Users\方建勇\AppData\Local\TEMP_~1\pip-req-build-b_wqgnsm
+
+
+C:\Users\方建勇>pip install  https://pypi.python.org/pypi/tensorflow/1.4.0
+Collecting  
+  Using cached 
+  Cannot unpack file  \AppData\Local\TEMP_~1   cannot detect archive format
+  
+  ------------------
+  
+  法：在shell中输入import pip; print(pip.pep425tags.get_supported())
+
+[('cp35', 'cp35m', 'win32'), 
+('cp35', 'none', 'win32'), 
+('py3', 'none', 'win32'),
+ ('cp35', 'none', 'any'),
+('py34', 'none', 'any'), 
+('py33', 'none', 'any'), 
+('py32', 'none', 'any'), 
+('py31', 'none', 'any'), 
+('py30', 'none', 'any')]
+--------------------- 
+AMD64
+
+    import pip._internal
+    print(pip._internal.pep425tags.get_supported())
+
+C:\Users\方建勇\Downloads>python
+Python 3.7.1 (default, Dec 10 2018, 22:54:23) [MSC v.1915 64 bit (AMD64)] :: Anaconda, Inc. on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import pip._internal
+>>> print(pip._internal.pep425tags.get_supported())
+[('cp37', 'cp37m', 'win_amd64'), ('cp37', 'none', 'win_amd64'), ('py3', 'none', 'win_amd64'), ('cp37', 'none', 'any'), ('cp3', 'none', 'any'), ('py37', 'none', 'any'), ('py3', 'none', 'any'), ('py36', 'none', 'any'), ('py35', 'none', 'any'), ('py34', 'none', 'any'), ('py33', 'none', 'any'), ('py32', 'none', 'any'), ('py31', 'none', 'any'), ('py30', 'none', 'any')]
+
+
+tensorflow-1.10.0-cp37-cp37m-win_amd64.whl
+
+>>>
+
+----------------------
+C:\Users\方建勇\Downloads>pip install tensorflow-1.12.0-cp37-cp37m-win_amd64.whl
+Processing c:\users\方建勇\downloads\tensorflow-1.12.0-cp37-cp37m-win_amd64.whl
+Collecting protobuf>=3.6.1 (from tensorflow==1.12.0)
+	
+	--------------
+	
+	pip show 
+	
+	C:\Users\方建勇>pip show tensorflow
+Name: tensorflow
+Version: 1.12.0
+Summary: TensorFlow is an open source machine learning framework for everyone.
+Home-page: https://www.tensorflow.org/
+Author: Google Inc.
+Author-email: opensource@google.com
+License: Apache 2.0
+Location: d:\anaconda\lib\site-packages
+Requires: keras-applications, wheel, gast, six, numpy, termcolor, astor, grpcio, tensorboard, protobuf, keras-preprocessing, absl-py
+Required-by:
+
+C:\Users\方建勇>
+-------------------------------
+
+
+pip uninstall 
+
+C:\Users\方建勇>pip uninstall tensorflow
+Uninstalling tensorflow-1.12.0:
+  Would remove:
+    d:\anaconda\lib\site-packages\tensorflow-1.12.0.dist-info\*
+    d:\anaconda\lib\site-packages\tensorflow\*
+    d:\anaconda\scripts\freeze_graph.exe
+    d:\anaconda\scripts\saved_model_cli.exe
+    d:\anaconda\scripts\tensorboard.exe
+    d:\anaconda\scripts\tflite_convert.exe
+    d:\anaconda\scripts\toco.exe
+    d:\anaconda\scripts\toco_from_protos.exe
+Proceed (y/n)? y
+
+
+---------------------------------
+
+pip install --upgrade keras==2.2.4 
+
+	 
+-----------------------------------
+配置gpu
+https://www.cnblogs.com/fanfzj/p/8521728.html
+
+-----------------------------------
+
+import tensorflow
+Traceback (most recent call last):
+  File "D:\Anaconda\lib\site-packages\tensorflow\python\pywrap_tensorflow.py", line 58, in <module>
+    from tensorflow.python.pywrap_tensorflow_internal import *
+  File "D:\Anaconda\lib\site-packages\tensorflow\python\pywrap_tensorflow_internal.py", line 28, in <module>
+    _pywrap_tensorflow_internal = swig_import_helper()
+  File "D:\Anaconda\lib\site-packages\tensorflow\python\pywrap_tensorflow_internal.py", line 24, in swig_import_helper
+    _mod = imp.load_module('_pywrap_tensorflow_internal', fp, pathname, description)
+  File "D:\Anaconda\lib\imp.py", line 242, in load_module
+    return load_dynamic(name, filename, file)
+  File "D:\Anaconda\lib\imp.py", line 342, in load_dynamic
+    return _load(spec)
+ImportError: DLL load failed: 找不到指定的模块。
+
+import tensorflow
+Traceback (most recent call last):
+ImportError: DLL load failed
+
+-------------
+tensorflow 1.12版本太高，卸载装1.10版本
+
+-----
+
+Could not install packages due to an EnvironmentError: [WinError 5] 拒绝访问。: 'd:\\anaconda\\lib\\site-packages\\numpy\\core\\multiarray.cp37-win_amd64.pyd'
+Consider using the `--user` option or check the permissions.
+
+d:\anaconda\lib\site-packages\numpy\core\multiarray.cp37-win_amd64.pyd
+
+修改该文件的权限，加上方建勇用户的全控制。
+有用：把文件multiarray.cp37-win_amd64.pyd移除
+
+pip install tensorflow-1.10.0-cp37-cp37m-win_amd64.whl
+
+-------------
+
+>>> import tensorflow as tf
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "D:\Anaconda\lib\site-packages\tensorflow\__init__.py", line 22, in <module>
+    from tensorflow.python import pywrap_tensorflow  # pylint: disable=unused-import
+  File "D:\Anaconda\lib\site-packages\tensorflow\python\__init__.py", line 49, in <module>
+    from tensorflow.python import pywrap_tensorflow
+  File "D:\Anaconda\lib\site-packages\tensorflow\python\pywrap_tensorflow.py", line 58, in <module>
+    from tensorflow.python.pywrap_tensorflow_internal import *
+  File "D:\Anaconda\lib\site-packages\tensorflow\python\pywrap_tensorflow_internal.py", line 111
+    def TFE_ContextOptionsSetAsync(arg1, async):
+                                             ^
+SyntaxError: invalid syntax
+>>>
+
+----------------
+
+pip install python-dateutil --upgrade
+
+
+
+Tensorflow is not supported on Python 3.7. You'll need to use python3.6 or earlier.
+
+C:\Users\方建勇\Downloads>python --version
+Python 3.7.1
+
+
+-------------------------------------------
+
+conda uninstall python 
+
+Proceed ([y]/n)? y
+
+Preparing transaction: done
+Verifying transaction: failed
+
+RemoveError: This operation will remove conda without replacing it with
+another version of conda.
+______________
+
+
+conda install python=3.6 (时间很长在检查环境，手工中断了)
+
+ 安装完Anaconda python 3.7，想使用python3.6方法
+
+cmd使用命令：
+
+conda create -n py36 python=3.6 anaconda
+
+安装好后，会有提示：
+
+To activate this environment, use:
+# > activate py36
+#
+# To deactivate an active environment, use:
+# > deactivate
+#
+# * for power-users using bash, you must source
+
+即想激活python3.6版本，使用命令：
+
+activate py36
+
+退出python3.6，使用命令：
+
+deactivate
+
+------------------------------
+
+
+C:\Users\方建勇>conda create -n py36 python=3.6 anaconda
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: D:\Anaconda\envs\py36
+
+  added / updated specs:
+    - anaconda
+    - python=3.6
+
+
+The following packages will be downloaded:
+
+-----------------------------
+
+环境创建成功后可以在Anaconda安装目录中的envs文件夹中查到。py36
+
+D:\Anacond\envs\py36
+
+--------------
+
+C:\Users\方建勇\Downloads>python
+Python 3.6.1 |Anaconda 4.4.0 (64-bit)| (default, May 11 2017, 13:25:24) [MSC v.1900 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> ^Z
+
+
+C:\Users\方建勇\Downloads>pip show tensorflow
+You are using pip version 9.0.1, however version 18.1 is available.
+You should consider upgrading via the 'python -m pip install --upgrade pip' command.
+
+C:\Users\方建勇\Downloads>pip install tensorflow-1.10.0-cp37-cp37m-win_amd64.whl
+tensorflow-1.10.0-cp37-cp37m-win_amd64.whl is not a supported wheel on this platform.
+You are using pip version 9.0.1, however version 18.1 is available.
+You should consider upgrading via the 'python -m pip install --upgrade pip' command.
+
+C:\Users\方建勇\Downloads>python -m pip install --upgrade pip
+Cache entry deserialization failed, entry ignored
+Collecting pip
+  Downloading https://files.pythonhosted.org/packages/c2/d7/90f34cb0d83a6c5631cf71dfe64cc1054598c843a92b400e55675cc2ac37/pip-18.1-py2.py3-none-any.whl (1.3MB)
+    13% |████▏                           | 174kB 29kB/s
+	
+	
+	-------------------
+	
+	
+	C:\Users\方建勇\Downloads>python
+Python 3.6.1 |Anaconda 4.4.0 (64-bit)| (default, May 11 2017, 13:25:24) [MSC v.1900 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>>     import pip._internal
+  File "<stdin>", line 1
+    import pip._internal
+    ^
+IndentationError: unexpected indent
+>>> import pip._internal
+>>> print(pip._internal.pep425tags.get_supported())
+[('cp36', 'cp36m', 'win_amd64'), ('cp36', 'none', 'win_amd64'), ('py3', 'none', 'win_amd64'), ('cp36', 'none', 'any'), ('cp3', 'none', 'any'), ('py36', 'none', 'any'), ('py3', 'none', 'any'), ('py35', 'none', 'any'), ('py34', 'none', 'any'), ('py33', 'none', 'any'), ('py32', 'none', 'any'), ('py31', 'none', 'any'), ('py30', 'none', 'any')]
+>>>
+
+C:\Users\方建勇\Downloads>pip install tensorflow-1.10.0-cp36-cp36m-win_amd64.whl
+Processing c:\users\方建勇\downloads\tensorflow-1.10.0-cp36-cp36m-win_amd64.whl
+
+---------------
+pip install tensorflow==1.5
+
+pip install tensorflow-1.5.0-cp36-cp36m-win_amd64.whl
+
+Cannot uninstall 'html5lib'. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall.
+
+
+C:\Users\方建勇\Downloads>python
+Python 3.6.1 |Anaconda 4.4.0 (64-bit)| (default, May 11 2017, 13:25:24) [MSC v.1900 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import tensorflow
+D:\Anaconda\envs\py36\lib\site-packages\h5py\__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+>>> import tensorflow as tf
+>>> print(tf.__version__)
+1.5.0
+>>>
+
+C:\Users\方建勇\Downloads>python
+Python 3.6.1 |Anaconda 4.4.0 (64-bit)| (default, May 11 2017, 13:25:24) [MSC v.1900 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import keras as kr
+D:\Anaconda\envs\py36\lib\site-packages\h5py\__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+>>> print(kr.__version__)
+2.2.4
+>>>
+
