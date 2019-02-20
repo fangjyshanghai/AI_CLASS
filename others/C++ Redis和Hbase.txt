@@ -1,0 +1,251 @@
+ 
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+int _tmain(int argc, _TCHAR* argv[])
+{
+	cout<<"hello world";
+	system("pause");
+	return 0;
+}
+
+
+--------------
+0x80070002  visual studio
+
+你这个问题是由于升级了vs2017后出现预编译头文件变为ph.h，然后自动生成的代码都不能执行是吗？问题有没有解决呢？ 
+
+严重性	代码	说明	项目	文件	行	禁止显示状态
+警告		CMake Warning (dev) at C:\Users\方建勇\Source\Repos\FoolGo\CMakeLists.txt:5 (PROJECT):
+  Policy CMP0048 is not set: project() command manages VERSION variables.
+  Run "cmake --help-policy CMP0048" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  The following variable(s) would be set to empty:
+
+    CMAKE_PROJECT_VERSION
+    CMAKE_PROJECT_VERSION_MAJOR
+    CMAKE_PROJECT_VERSION_MINOR
+    CMAKE_PROJECT_VERSION_PATCH
+This warning is for project developers.  Use -Wno-dev to suppress it.	FoolGo	C:\Users\方建勇\Source\Repos\FoolGo\CMakeLists.txt	5	
+
+-----
+重装社区版
+
+错误代码 = 0x80070002。错误: 找不到  线程 0x1f0 已退出，返回值为 0 (0x0)。
+
+无法查找或打开 PDB 文件。
+
+
+无法查找或打开 PDB 文件解决办法
+2016年11月12日 01:58:26 unswimmingfish 阅读数：4322
+
+用VS调试程序时，有时会在VS底部的“输出”框中提示“无法查找或打开 PDB 文件”。这该怎么解决呢？
+
+
+    打开VS2013，点击菜单“工具”-“选项”。
+    无法查找或打开 PDB 文件解决办法
+
+
+
+
+
+
+
+
+
+    在选项窗口中，展开“调试”-“常规”，然后在右边的窗格中勾选“启用源服务器支持”。
+    无法查找或打开 PDB 文件解决办法
+
+
+
+
+
+    然后展开“调试”-“符号”，勾选“Windows符号服务器”。
+    无法查找或打开 PDB 文件解决办法
+
+
+
+
+
+    这时，会弹出一个警告对话框，无视点击“确定”即可。
+    无法查找或打开 PDB 文件解决办法
+
+
+
+
+
+    最后，点击“确定”关闭选项窗口。
+    无法查找或打开 PDB 文件解决办法
+
+
+
+
+
+    下面，我们再来点击“本地Windows调试器”调试运行程序。
+    无法查找或打开 PDB 文件解决办法
+
+
+
+
+    第一次运行该程序时，会从Windows服务器上下载相关的符号集，这需要一点时间。
+	
+	-------------
+	
+	vcruntime140d.dll”。无法查找或打开 PDB 文件。
+	
+	string getLCS(string str1, string str2) {
+	vector<vector<int> > record(str1.length(), vector<int>(str2.length()));
+	int maxLen = 0, maxEnd = 0;
+	for(int i=0; i<static_cast<int>(str1.length()); ++i)
+		for (int j = 0; j < static_cast<int>(str2.length()); ++j) {
+			if (str1[i] == str2[j]) {
+				if (i == 0 || j == 0) {
+					record[i][j] = 1;
+				}
+				else {
+					record[i][j] = record[i - 1][j - 1] + 1;
+				}
+			}
+			else {
+				record[i][j] = 0;
+			}
+ 
+ 
+			if (record[i][j] > maxLen) {
+				maxLen = record[i][j];
+				maxEnd = i; //若记录i,则最后获取LCS时是取str1的子串
+			}
+		}
+	return str1.substr(maxEnd - maxLen + 1, maxLen);
+}
+
+-------------------------
+
+Hello World!
+Hello Fang!
+
+C:\Users\方建勇\Source\Repos\HelloWorld\x64\Debug\HelloWorld.exe (进程 13960)已退出，返回代码为: 0。
+按任意键关闭此窗口...
+
+vs2017弹窗提示有方法：工具->选项->常规->拉到最下面，在选项“调试停止时自动关闭控制台”打勾。
+
+----------------------------
+
+
+使用NuGet添加
+
+配置完之后，我还发现微软的NuGet竟然也可以添加boost。方法很简单，在项目菜单中点击管理NuGet包，然后搜索boost，然后点击右边的下载按钮即可。
+
+NuGet安装boost
+
+由于boost是一个比较大的库，所以这个安装过程可能需要多花费几分钟。安装完成后boost类库会放到项目文件夹的package文件夹中。NuGet会自动帮我们做所有工作，我们接下来直接使用就可以了。
+运行boost程序
+
+配置好之后，就可以运行boost程序了。下面是一个简单例
+子，使用了boost库的一些高精度（最大可达100位）数学常量（值得吐槽的是C++标准库居然没有像样的数学库，能用的只有<cmath>，而且甚至连PI常量都没有）。
+--------------------- 
+
+http://www.cmake.org/download/
+
+--------------
+
+Selecting Windows SDK version 10.0.17763.0 to target Windows 10.0.17134.
+CMake Error at 3rd/googletest/googletest/CMakeLists.txt:51 (project):
+  Failed to run MSBuild command:
+C:/Users/方建勇/Source/Repos/target/CMakeFiles/CMakeOutput.log
+
+C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/MSBuild/15.0/Bin/MSBuild.exe
+
+  to get the value of VCTargetsPath:
+
+
+C:\Users\方建勇\Source\Repos\FoolGo\3rd\googletest\googletest
+
+project(gtest VERSION 1.9.0 LANGUAGES CXX C)
+
+Failed to run MSBuild command:
+
+to get the value of VCTargetsPath:
+
+
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets
+
+---------------------
+
+Makefile有三个非常有用的变量。分别是$@，$^，$<代表的意义分别是：
+
+$@--目标文件，$^--所有的依赖文件，$<--第一个依赖文件。
+
+-----------------
+
+MSBuild特殊字符
+
+一些字符在MSBuild中代表着特殊的上下文含义，如下：
+MSBuild的特殊字符[%引用元数据]、[$引用属性]、[@引用项]、['条件或其他表达式]、[;列表分隔符]、[?文件名通配符]、[*文件名通配符]；
+XML的保留字符：<、>、&、"、'
+
+针对MSBuild的特殊字符转义需要用[%xx]这种方式，xx代表字符的ASCII十六进制值（[%=%25][$=%24][@=%40]['=%27][;=%3B][?=%3F][*=%2A]）。针对XML保留字符则使用&lt这种方式。 一般用到这些特殊字符的情况不多，见到时能知道是转义就可以了。
+-------------------
+
+CUDA的版本和cundd的版本要对应，不然可能会有不兼容报错。CUDA是显卡驱动程序，cundd是用来加速深度学习训练的库，在训练网络时，使用GPU加速，会调CUDA驱动和cudnn库，安装时两者要联系起来
+
+cuDNN的全称为NVIDIA CUDA® Deep Neural Network library，是NVIDIA专门针对深度神经网络（Deep Neural Networks）中的基础操作而设计基于GPU的加速库。cuDNN为深度神经网络中的标准流程提供了高度优化的实现方式，例如convolution、pooling、normalization（正则，归一，标准化）以及activation layers的前向以及后向过程。
+
+-------
+
+.安装TensorFlow
+
+安装：在命令窗口中输入pip install tensorflow-gpu，
+
+如果要安装（更新）最新的版本，可输入： pip install --upgrade tensorFlow-gpu
+
+等待安装完成即可
+
+4.现在CUDA,cudnn,TensorFlow都已经安装好了，可以尽情的去写TensorFlow代码啦！
+
+（注：新手第一次使用TensorFlow-GPU版时，训练网络时应该在tf.session处做一点修改，如下：
+
+将with tf.Session() as sess:
+
+改为：
+
+config = tf.ConfigProto()
+config.gpu_options.allow_growth = True
+
+with tf.Session(config=config) as sess
+
+-------------
+
+设置环境变量
+
+
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin
+
+----
+
+cmake error in configuration process ,project files may be invalid
+
+CMake Error at CMakeLists.txt Failed to run MSBuild command
+
+---------------
+
+具体实现步骤如下：
+
+1. 从网上下载ippicv_windows_20151201.zip，这个压缩包网上有很多链接，可以直接下载；
+
+2. 将ippicv_windows_20151201.zip放在文件D:\OpenCV3.2\opencv\sources\3rdparty\ippicv\downloads\windows-04e81ce5d0e329c3fbc606ae32cad44d下；
+
+3. 重新进行CMake，发现Configure成功，再点Gernerate生成如下图所示：
+
+-----------------
+往opencv中添加opencv_contrib模块，找到OPENCV_EXTRA_MODULES_PATH，后面添加路径D:\opencv3\source\opencv_contrib\modules，精确到\modules。然后继续configure，一次之后如果还有红色的块，继续configure，知道全部变白为止。 
+然后点击Generate,回提示Generate Done。恭喜，完成了一半！！！
+
+--------------
+
+准备工作: 1.opencv的安装已经完成(包插mingw-64,cmake)
+
+                    2.vscode安装并安装cpptool支持插件
+
+                    
